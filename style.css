@@ -1,0 +1,164 @@
+:root {
+    --bg-color: #1a1a1a;
+    --panel-color: #2a2a2a;
+    --text-color: #eeeeee;
+    --accent-color: #4CAF50;
+    --danger-color: #f44336;
+    --border-radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+#app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Toolbars */
+.toolbar {
+    background-color: var(--panel-color);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.toolbar.top {
+    justify-content: space-between;
+}
+
+.toolbar.bottom {
+    overflow-x: auto; /* Allow horizontal scroll for settings if needed */
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+}
+
+.spacer {
+    flex: 1;
+}
+
+/* Workspace */
+#workspace {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background-image: 
+        linear-gradient(45deg, #222 25%, transparent 25%), 
+        linear-gradient(-45deg, #222 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #222 75%), 
+        linear-gradient(-45deg, transparent 75%, #222 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#canvas-wrapper {
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    /* Transform origin center for zooming to fit */
+    transform-origin: center center;
+}
+
+canvas {
+    display: block;
+    background-color: white; /* Default visual bg */
+}
+
+/* Controls */
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+    min-width: fit-content;
+    padding: 0 8px;
+    border-right: 1px solid #444;
+}
+
+.control-group:last-child {
+    border-right: none;
+}
+
+.inputs {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+input[type="number"] {
+    width: 50px;
+    background: #333;
+    border: 1px solid #444;
+    color: white;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+input[type="color"] {
+    width: 40px;
+    height: 30px;
+    border: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: opacity 0.2s;
+}
+
+.btn:active {
+    opacity: 0.7;
+}
+
+.btn.primary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn.danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.icon-btn {
+    background: #444;
+    color: white;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.hidden {
+    display: none !important;
+}
+
